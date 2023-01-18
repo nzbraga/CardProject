@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Happy-Monkey', sans-serif;
+    align-content: center;
+    text-align: center;
+    border-radius: 5px;    
+}
+body{    
+    background-image: url("../img/2a2b6dd7efe2a8874699abf24a7d6dac.jpg");
+    background-position: top;
+    background-size:cover;
+    background-attachment: fixed;
+}
+button i {
+    pointer-events: none;
+}
+button:active {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+header {
+    background-color: rgba(140, 175, 175, 0.6);
+    padding-bottom: .5em;
+    max-width: 40rem;
+    margin: auto;
+    margin-bottom: 1em;
+    
+}
+header h1 {
+    font-family: 'Happy Monkey', sans-serif;
+    padding-top: .5em;
+}
+.top-menu {
+    font-family: 'Happy-Monkey', sans-serif;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5em;
+    margin-bottom: .4em;
+}
+#btn-container button, 
+#btn-container-user button {
+    display: inline-flex;
+    padding: .5em 1.1em;
+    border: none;
+    margin-bottom: .2em;
+}
+.btn-menu, .card-container-home {
+    background-color: transparent;
+    margin: auto;
+    border: none;
+    font-size: 1em;
+    padding: 1em;
+}
+#card, 
+#card-open {
+    background-color: rgb(140, 175, 175, .8 );
+    margin: auto;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+.card, 
+.card-open,
+.card-combat {
+    background-color: rgb(140, 175, 175, .8 );
+    margin: 1em;
+    padding: 1em;
+    max-width: 40rem;
+    margin: auto;
+}
+
+.card-open button {
+    
+    margin: auto;
+    border: none;
+    font-size: 1em;
+    padding:  .5em;
+}
+.card-header, .card-open {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    margin-bottom: .4em;    
+}
+.card-title {    
+    min-width: 60%   
+}
+.card-header button,
+.card-header-open button {
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+}
+.card-score {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.card-score-combat {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card-score h4 {
+    font-size: .6em;
+}
+.card-score button {
+    width: 5em;
+    border: none;
+}
+.card-score h3 {
+    font-size:  3em;
+    background-color: rgba(183, 240, 240, 0.2);
+    max-width: 1.3em;
+    margin: auto;
+}
+.card-score-combat h4 {
+    font-size: .6em;
+}
+.card-score-combat button {
+    width: 5em;
+    border: none;
+}
+.card-score-combat h3 {
+    font-size:  3em;
+    background-color: rgba(183, 240, 240, 0.2);
+    max-width: 1.3em;
+    margin: auto;
+}
+.card-skill h3 {
+    font-size:  5em;
+    background-color: rgba(183, 240, 240, 0.2);
+    max-width: 1.3em;
+    margin: auto;
+}
+.user-score h4 {    
+    font-size: 5em;
+    font-weight: bolder;
+}
+.title-card-open {
+    display: inline-flex;
+    padding: 1em 5.5em;
+    background-color: rgb(5, 60, 212, 0.6);
+}
+.save-id {    
+    text-align: center;
+    align-content: center;
+    padding: .2em  .5em;
+    background-color: rgba(5, 2, 0, 0.4);
+    margin: auto;
+}
+
+.progress-bar{
+    display: flex;
+    width: 100%;
+    margin-bottom: .5em;
+}
+
+.card p {
+    margin: .5rem;
+}
+
+
+.hide {
+    display: none;
+}
