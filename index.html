@@ -13,176 +13,162 @@
 
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/script/script.js" defer></script>
+    
 
-    <title>COMBAT</title>
+    <title>combate</title>
     
     </head>
 
 <body>
 
+   
+
     <header>
         
         <div class="top-menu">  
-            <button class="card-container-home" id="card-container-home">🍄</i></button>          
-            <h1> COMBAT </h1>
-            <button id="btn-menu" class="btn-menu"><i class="fa-solid fa-bars"></i></button>
-        </div>
-        <div id="btn-container">
-            <button class="add-user" id="add-user"><i class="fa-solid fa-user-plus"></i></button>
-            <button class="btn-save" id="btn-save"><i class="fa-solid fa-floppy-disk"></i></button>
-            <button class="clear-all" id="clear-all"><i class="fa-solid fa-user-xmark"></i></button>
-        </div>
-        <div id="btn-container-user" class="">
-            <button id="btn-open" class="btn-open"><i class="fa-regular fa-folder-open"></i></button>
-            <button id="btn-delete" class="btn-delete" ><i class="fa-solid fa-trash"></i></button>
            
+            <h1> Combate </h1>
+            
         </div>
 
     </header>
+
+
+
+    <div class="tutorial">
+        <button class="btn-tutorial">?</button>
+        <button class="btn-hide">hide</button>
+
+        <p id="tutorial-texto" class="hide"> Seja Bem vindo ao "nome do app"<br>
+            Escolha um nome,e distribua seus pontos entre os atribudos: <br>
+            Força: seu potencial de dano <br>
+            Habilidade: seu potencial de acertar o golpe <br>
+            Resistencia: esta diretamente ligado aos seus ponntos de Vida
+            Armadura: capacidade de absorver o dano recebido do inimigo
+        </p>
+
+    </div>
     
+   
     <main id="card-container" class="card-container">
-    
+      
         <form id="card" class="card">
 
             <div class="card-header">
                 <button class="btn-edit-card"><i class="fa-solid fa-user-pen"></i></button>
-                <h2 class="card-title">BOB</h2>
-                <button class="btn-save-card"><i class="fa-solid fa-user-plus"></i></button>
-                <button class="btn-del-card"><i class="fa-solid fa-x"></i></button>
+                <h2 class="card-title">  <--Esolha um nome </h2>
+                <button class="btn-add-user"><i class="fa-solid fa-user-plus"></i></button>
             </div>
 
-            <div class="card-score">
+            <div class="card-skill">
 
                 <div class="card-strong">
-                    <p class="score-title">FORÇA</p>
+                    <p class="skill-title">FORÇA</p>
                     <button class="btn-up"><i class="fa-solid fa-caret-up"></i></button>
                     <h3 class="strong-number">0</h3>
                     <button class="btn-down"><i class="fa-solid fa-caret-down"></i></button>
                 </div>
 
                 <div class="card-dextricity">
-                    <p class="score-title">HABILIDADE</p>
+                    <p class="skill-title">HABILIDADE</p>
                     <button class="btn-up"><i class="fa-solid fa-caret-up"></i></button>
                     <h3 class="dextricity-number">0</h3>
                     <button class="btn-down"><i class="fa-solid fa-caret-down"></i></button>
                 </div>
 
                 <div class="card-resistance">
-                    <p class="score-title">RESISTENCIA</p>
+                    <p class="skill-title">RESISTENCIA</p>
                     <button class="btn-up"><i class="fa-solid fa-caret-up"></i></button>
                     <h3 class="resistance-number">0</h3>
                     <button class="btn-down"><i class="fa-solid fa-caret-down"></i></button>
                 </div>
 
                 <div class="card-armor">
-                    <p class="score-title">ARMADURA</p>
+                    <p class="skill-title">ARMADURA</p>
                     <button class="btn-up"><i class="fa-solid fa-caret-up"></i></button>
                     <h3 class="armor-number">0</h3>
                     <button class="btn-down"><i class="fa-solid fa-caret-down"></i></button>
                 </div>
 
                 
-                <div class="card-skill">
-                    <p class="score-title">PONTOS</p>                
+                <div class="card-skill-points">
+                    <p class="skill-title">PONTOS</p>                
                     <h3 class="skill-number">10</h3>                
                 </div>
                 
             </div>
             
-                <p>*PONTOS DE VIDA É SUA RESISTENCIA x6</p>
+            <div class="progress-container">
+                <progress class="progress-bar" max="36" value="0"></progress>
+                
+                <p>PONTOS DE VIDA</p>
                 <h3 class="life-number">0</h3>
-        </form>
-        
-    
-    </main>
-
-<div class="combat">
-    <div id="combat-card" class="hide">
-
-        <form id="card-combat" class="card-combat">
-
-            <div class="card-header">
-                <button class="btn-edit-card"><i class="fa-solid fa-user-pen"></i></button>
-                <h2 class="card-title">BOB</h2>
-                <button class="btn-del-card"><i class="fa-solid fa-x"></i></button>
-            </div>
-            <progress class="progress-bar" max="12" value="10"></progress>
-            <div class="card-score-combat">
-
-                <div class="card-strong">
-                    <p class="score-title">FORÇA</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-
-                <div class="card-dextricity">
-                    <p class="score-title">HABILIDADE</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-
-                <div class="card-resistance">
-                    <p class="score-title">RESISTENCIA</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-
-                <div class="card-armor">
-                    <p class="score-title">ARMADURA</p>
-                    <h3 class="score-number">0</h3>
-                </div>
                 
             </div>
-        
-        </form>
-<br>
-        <button>Atack1</button>
-        <button>Atack2</button>
-        <br>
-        <br>
-        <form id="card-combat" class="card-combat">
-
-            <div class="card-header">
-                <button class="btn-edit-card"><i class="fa-solid fa-user-pen"></i></button>
-                <h2 class="card-title">BOB</h2>
-                <button class="btn-del-card"><i class="fa-solid fa-x"></i></button>
-            </div>
-            <progress class="progress-bar" max="12" value="10"></progress>
-            <div class="card-score-combat">
-
-                <div class="card-strong">
-                    <p class="score-title">FORÇA</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-
-                <div class="card-dextricity">
-                    <p class="score-title">HABILIDADE</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-
-                <div class="card-resistance">
-                    <p class="score-title">RESISTENCIA</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-
-                <div class="card-armor">
-                    <p class="score-title">ARMADURA</p>
-                    <h3 class="score-number">0</h3>
-                </div>
-                
-            </div>
-        
         </form>
 
-        
-    </div>
-</div>
+        <div id="combate-interaction" class="hide">
+            <div>
+                <h2 class="turn-title">TURNO DE:</h2>
+                <p id="turn-player1" class="turn-player1">PLAYER1</p>
+                <p id="turn-player2" class="turn-player2">PLAYER2</p>
+                <h3 id="combate-text"></h3>
+                <button id="btn-atack1" class="btn-atack1">Atacar</button>
+                <button id="btn-atack2" class="btn-atack2">Atacar</button>
 
-
-    <div id="card-open-container" class="card-open-container">
-        <div id="card-open" class="hide">
-            <h2 id="title-card-open" class="title-card-open">HEROIS</h2>
+                <!--<button class="btn-atack">Defender</button>  mecanica de defesa e contra ataque  -->
+            </div>
         </div>
 
-    </div>
 
+        <div id="combate-container" class="combate-container">
+            <!--    
+            
+            <div class="player">
+
+               <form id="card-combate" class="card-combate">
+        
+                    <div class="card-header">
+                        <button class=""></button>
+                        <h2 class="card-title">Player1</h2>
+                        <button class="btn-del-card"><i class="fa-solid fa-x"></i></button>
+                    </div>
+                    <progress class="progress-bar" max="12" value="9"></progress>
+                    <div class="card-skill-combate">
+        
+                        <div class="card-strong">
+                            <p class="skill-title">FORÇA</p>
+                            <h3 class="skill-number">0</h3>
+                        </div>
+        
+                        <div class="card-dextricity">
+                            <p class="skill-title">HABILIDADE</p>
+                            <h3 class="skill-number">0</h3>
+                        </div>
+        
+                        <div class="card-resistance">
+                            <p class="skill-title">RESISTENCIA</p>
+                            <h3 class="skill-number">0</h3>
+                        </div>
+        
+                        <div class="card-armor">
+                            <p class="skill-title">ARMADURA</p>
+                            <h3 class="skill-number">0</h3>
+                        </div>
+                        
+                    </div>
+                
+                </form>
+        
+            </div>
+            
+            
+        -->
+        </div>
+ 
+    </main>
+
+ 
 </body>
 </html>
     

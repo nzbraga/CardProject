@@ -2,16 +2,17 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Happy-Monkey', sans-serif;
-    align-content: center;
-    text-align: center;
-    border-radius: 5px;    
+    text-align: center;  
 }
+
 body{    
     background-image: url("../img/2a2b6dd7efe2a8874699abf24a7d6dac.jpg");
     background-position: top;
     background-size:cover;
     background-attachment: fixed;
+    
 }
+
 button i {
     pointer-events: none;
 }
@@ -31,6 +32,7 @@ header h1 {
     font-family: 'Happy Monkey', sans-serif;
     padding-top: .5em;
 }
+
 .top-menu {
     font-family: 'Happy-Monkey', sans-serif;
     display: flex;
@@ -38,30 +40,23 @@ header h1 {
     font-size: 1.5em;
     margin-bottom: .4em;
 }
-#btn-container button, 
-#btn-container-user button {
-    display: inline-flex;
-    padding: .5em 1.1em;
-    border: none;
-    margin-bottom: .2em;
-}
-.btn-menu, .card-container-home {
+#card-container {
     background-color: transparent;
     margin: auto;
     border: none;
     font-size: 1em;
     padding: 1em;
+    
 }
-#card, 
-#card-open {
+#card {
     background-color: rgb(140, 175, 175, .8 );
     margin: auto;
     margin-bottom: 1em;
     padding: 1em;
 }
+
 .card, 
-.card-open,
-.card-combat {
+.card-combate {
     background-color: rgb(140, 175, 175, .8 );
     margin: 1em;
     padding: 1em;
@@ -69,14 +64,7 @@ header h1 {
     margin: auto;
 }
 
-.card-open button {
-    
-    margin: auto;
-    border: none;
-    font-size: 1em;
-    padding:  .5em;
-}
-.card-header, .card-open {
+.card-header {
     display: flex;
     justify-content: space-between;
     font-size: 1.5em;
@@ -91,35 +79,38 @@ header h1 {
     border: none;
     font-size: 1em;
 }
-.card-score {
+.card-skill {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-.card-score-combat {
+.card-skill-points {
+    font-size: 1.5em;
+}
+.card-skill-combate {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.card-score h4 {
+.card-skill h4 {
     font-size: .6em;
 }
-.card-score button {
+.card-skill button {
     width: 5em;
     border: none;
 }
-.card-score h3 {
+.card-skill h3 {
     font-size:  3em;
     background-color: rgba(183, 240, 240, 0.2);
     max-width: 1.3em;
     margin: auto;
 }
-.card-score-combat h4 {
+.card-skill-combate h4 {
     font-size: .6em;
 }
-.card-score-combat button {
+.card-skill-combate button {
     width: 5em;
     border: none;
 }
-.card-score-combat h3 {
+.card-skill-combate h3 {
     font-size:  3em;
     background-color: rgba(183, 240, 240, 0.2);
     max-width: 1.3em;
@@ -131,7 +122,7 @@ header h1 {
     max-width: 1.3em;
     margin: auto;
 }
-.user-score h4 {    
+.user-skill h4 {    
     font-size: 5em;
     font-weight: bolder;
 }
@@ -148,16 +139,80 @@ header h1 {
     margin: auto;
 }
 
-.progress-bar{
-    display: flex;
+#combate-interaction{
+    max-width: 40em;
+    margin-bottom: 5em;
+    background-color: rgb(223, 217, 217);
+    margin: auto;
+    margin-bottom: .8em;
+} 
+#combate-interaction h2 {
+    min-height: 2em;
+    margin-top: .5em;
+    padding-top: 1em;
+    background-color: rgb(223, 217, 217);
+    height: 2em;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+#combate-interaction h3 {
+
+    padding: .8em;
+    background-color: rgb(255, 0, 0);
+    
+    min-height: 2.5em;
+  
+}
+
+#combate-interaction p {
+    margin-top: .5em;
+    background-color: rgb(223, 217, 217);
+    height: 2em;
+    font-weight: bold;
+    font-size: 1.2em;
+    
+    
+}
+
+#combate-interaction button {
+    padding: .5em;
+    border-radius: .5em;
+    border: none;
+    background-color: rgb(202, 15, 15);
+    color: rgb(93, 131, 255);
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: .2em;
+}
+
+.combate-text{
+    margin: 5rem;
+}
+.btn-atack1,
+.btn-atack2 {
+    margin: .5rem;
+}
+
+
+.btn-atack {
+    font-size: 1rem;
+}
+
+.progress-bar {  
+    height: 5em;
     width: 100%;
     margin-bottom: .5em;
+    font-size: 1em;
+    color: brown;
 }
 
 .card p {
     margin: .5rem;
 }
 
+.card-combate{
+    margin-bottom: .5rem;
+}
 
 .hide {
     display: none;
