@@ -48,6 +48,13 @@ header h1 {
     padding: 1em;
     
 }
+
+#tutorial-texto {
+    background-color: rgb(240, 248, 255);
+    color: black;
+    font-size: 2em;
+}
+
 #card {
     background-color: rgb(140, 175, 175, .8 );
     margin: auto;

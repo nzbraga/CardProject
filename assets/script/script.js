@@ -2,18 +2,18 @@
 const header = document.querySelector('header');
 const main = document.querySelectorAll('main');
 const skillPointsValue = document.querySelector(".skill-number")
+const playerLen = document.querySelectorAll(".player")
 
 document.addEventListener('click', (e)=>{
     e.preventDefault()
     const targetEl = e.target;
     const parentEl = targetEl.closest("div");
     const parentForm = targetEl.closest("form");
-       
-    if (targetEl.classList.contains("btn-hide")) {       
-        let card = document.querySelector("#card")
-
-        card.classList.toggle('hide')
-    }
+    
+    if (targetEl.classList.contains("btn-tutorial")) {
+        let tutorial = document.querySelector("#tutorial-texto")
+        tutorial.classList.toggle('hide')
+    }       
     if (targetEl.classList.contains("btn-atack1")) {       
         
         hero1.atack()
@@ -84,17 +84,12 @@ document.addEventListener('click', (e)=>{
         else if(skillPoints != 0)
         {alert("Você ainda tem " + `${skillPoints}` +  " pra usar...    Clique na '?' pra tirar duvidas")}
         return
-        
-
-        
+                
     }
-        
-
+    if (targetEl.classList.contains("btn-load")){
+        openHero()     
+    }       
 })
- 
-
-  
-
 // function
 function btnDown() {
     addSkill = newSkill.innerHTML
@@ -121,7 +116,7 @@ function lifeGen(){
     let resistanceLife = document.querySelector(".resistance-number")
     newResLife = resistanceLife.innerHTML
 
-    lifeValue.innerHTML = parseInt(newResLife) * 20
+    lifeValue.innerHTML = parseInt(newResLife *6 ) * 3 
     
 }
 function dice(max,r) {
@@ -129,6 +124,54 @@ function dice(max,r) {
     return Math.floor(Math.random() * max + 1)*r
 }
 //------------------------
+  
+
+
+function openHero(){
+
+    for (let[key] of Object.entries(localStorage)){
+                        
+        if(key == "hero1"){
+
+        let savedHero1 = localStorage.getItem('hero1')
+        preHero1 =  JSON.parse(savedHero1)
+        
+        hero1 = new Hero("","","","","hero1",preHero1.name,"",preHero1.strong,
+        preHero1.dextrecity,preHero1.resistance,preHero1.armor,preHero1.life,"","") 
+
+        hero1.createHeader(preHero1.name,preHero1.life)
+        hero1.createSkills("strong", "FORÇA" , preHero1.strong)
+        hero1.createSkills("dextricity", "HABILIDADE" , preHero1.dextrecity)
+        hero1.createSkills("resistance", "RESISTENCIA" , preHero1.resistance)
+        hero1.createSkills("armor", "ARMADURA" , preHero1.armor)
+            
+        }else if(key == "hero2"){
+                                 
+    
+            let savedHero2 = localStorage.getItem('hero2')
+            preHero2 =  JSON.parse(savedHero2)
+    
+            hero2 = new Hero("","","","","hero2",preHero2.name,"",preHero2.strong,
+            preHero2.dextrecity,preHero2.resistance,preHero2.armor,preHero2.life,"","")
+               
+            hero2.createHeader(preHero2.name,preHero2.life)
+            hero2.createSkills("strong", "FORÇA" , preHero2.strong)
+            hero2.createSkills("dextricity", "HABILIDADE" , preHero2.dextrecity)
+            hero2.createSkills("resistance", "RESISTENCIA" , preHero2.resistance)
+            hero2.createSkills("armor", "ARMADURA" , preHero2.armor)
+                
+        }
+    } 
+
+    let playerPosition = document.querySelectorAll(".player")
+    len = playerPosition.length
+    if(len > 1){
+        let cardContainer = document.querySelector("#card")
+        cardContainer.classList.toggle('hide')
+    }
+}
+
+
 function addHero(){
 
 
@@ -144,6 +187,12 @@ function addHero(){
         let newResistanceHero = document.querySelector('.resistance-number').innerHTML
         let newArmorHero = document.querySelector('.armor-number').innerHTML
         let newLifeHero = document.querySelector('.life-number').innerHTML
+
+    
+        let hero1 = {id:"hero1",name:newNameHero,strong:newStrongHero,dextrecity:newDextricityHero,
+            resistance: newResistanceHero,armor: newArmorHero,life:newLifeHero}
+
+        localStorage.setItem('hero1', JSON.stringify(hero1))
 
     hero1 = new Hero("","","","","hero1",newNameHero,"",newStrongHero,newDextricityHero,newResistanceHero,newArmorHero,newLifeHero,"","")
            
@@ -162,6 +211,12 @@ function addHero(){
             let newArmorHero = document.querySelector('.armor-number').innerHTML
             let newLifeHero = document.querySelector('.life-number').innerHTML
             
+            let hero2 = {id:"hero2",name:newNameHero,strong:newStrongHero,dextrecity:newDextricityHero,
+                resistance: newResistanceHero,armor: newArmorHero,life:newLifeHero}
+
+    
+            localStorage.setItem('hero2', JSON.stringify(hero2))
+
     hero2 = new Hero("","","","","hero2",newNameHero,"",newStrongHero,newDextricityHero,newResistanceHero,newArmorHero,newLifeHero,"","")
             
         hero2.createHeader(newNameHero,newLifeHero)
@@ -193,8 +248,6 @@ function addHero(){
 
     
 }
-
-
 
 class Hero {
  
@@ -278,6 +331,8 @@ class Hero {
     }       
     atack(){        
         
+      
+
     const combateText = document.querySelector('#combate-text')
     let rollDice = dice(6,0)
     if(rollDice == 6 || rollDice == 1){            
@@ -361,13 +416,14 @@ class Hero {
             if (hero1.Life <= 0){
                 combateText.innerHTML = hero1.Name + ' morrer <br>'
                 + hero2.Name + " é o VENCEDOR"
-                hero1.form.remove()
-                hero = ""               
+                hero1 = ""     
+                  
             } else if(hero2.Life <= 0) {
                 combateText.innerHTML = hero2.Name +  ' morrer <br>'
                 + hero1.Name + " é o VENCEDOR"
                 hero2.form.remove()  
                 hero2 = "" 
+ 
             }
           
         }        
