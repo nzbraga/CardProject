@@ -28,17 +28,20 @@ document.addEventListener('click', (e)=>{
         btnHero2.classList.toggle('hide')
         
     }
-    if (targetEl.classList.contains("btn-atack2")) {       
+    if (targetEl.classList.contains("btn-atack2")) {      
+
         
         hero2.atack()
         let btnHero1 = document.querySelector("#btn-atack1")
-        let btnHero2 = document.querySelector("#btn-atack2")
         let turn1 = document.querySelector("#turn-player1")
+        let btnHero2 = document.querySelector("#btn-atack2")
         let turn2 = document.querySelector("#turn-player2")
+
         turn1.classList.toggle('hide')
-        turn2.classList.toggle('hide')
         btnHero1.classList.toggle('hide')
         btnHero2.classList.toggle('hide')
+        turn2.classList.toggle('hide')
+
     }
     if (targetEl.classList.contains("btn-up")) {       
         newSkill = parentEl.querySelector('h3')
@@ -87,6 +90,7 @@ document.addEventListener('click', (e)=>{
                 
     }
     if (targetEl.classList.contains("btn-load")){
+        load()
         openHero()     
     }       
 })
@@ -124,32 +128,28 @@ function dice(max,r) {
     return Math.floor(Math.random() * max + 1)*r
 }
 //------------------------
-  
-
-
-function openHero(){
+ function openHero(){ 
 
     for (let[key] of Object.entries(localStorage)){
                         
         if(key == "hero1"){
 
-        let savedHero1 = localStorage.getItem('hero1')
-        preHero1 =  JSON.parse(savedHero1)
-        
-        hero1 = new Hero("","","","","hero1",preHero1.name,"",preHero1.strong,
-        preHero1.dextrecity,preHero1.resistance,preHero1.armor,preHero1.life,"","") 
-
-        hero1.createHeader(preHero1.name,preHero1.life)
-        hero1.createSkills("strong", "FORÇA" , preHero1.strong)
-        hero1.createSkills("dextricity", "HABILIDADE" , preHero1.dextrecity)
-        hero1.createSkills("resistance", "RESISTENCIA" , preHero1.resistance)
-        hero1.createSkills("armor", "ARMADURA" , preHero1.armor)
+            let savedHero1 = localStorage.getItem('hero1')
+            preHero1 = JSON.parse(savedHero1)
             
+            hero1 = new Hero("","","","","hero1",preHero1.name,"",preHero1.strong,
+            preHero1.dextrecity,preHero1.resistance,preHero1.armor,preHero1.life,"","") 
+
+            hero1.createHeader(preHero1.name,preHero1.life)
+            hero1.createSkills("strong", "FORÇA" , preHero1.strong)
+            hero1.createSkills("dextricity", "HABILIDADE" , preHero1.dextrecity)
+            hero1.createSkills("resistance", "RESISTENCIA" , preHero1.resistance)
+            hero1.createSkills("armor", "ARMADURA" , preHero1.armor)
+                
         }else if(key == "hero2"){
-                                 
-    
+                                     
             let savedHero2 = localStorage.getItem('hero2')
-            preHero2 =  JSON.parse(savedHero2)
+            preHero2 = JSON.parse(savedHero2)
     
             hero2 = new Hero("","","","","hero2",preHero2.name,"",preHero2.strong,
             preHero2.dextrecity,preHero2.resistance,preHero2.armor,preHero2.life,"","")
@@ -162,16 +162,9 @@ function openHero(){
                 
         }
     } 
-
-    let playerPosition = document.querySelectorAll(".player")
-    len = playerPosition.length
-    if(len > 1){
-        let cardContainer = document.querySelector("#card")
-        cardContainer.classList.toggle('hide')
-    }
+    
+      
 }
-
-
 function addHero(){
 
 
@@ -239,14 +232,28 @@ function addHero(){
 
         let turn1name = document.querySelector("#turn-player1")
         let turn2name = document.querySelector("#turn-player2")
-        turn1name.innerHTML = hero1.Name
-        turn2name.innerHTML = hero2.Name
+        turn1name.innerHTML = hero1.name
+        turn2name.innerHTML = hero2.name
 
         
 
     }
 
     
+}
+function load(){
+    let cardContainer = document.querySelector("#card")
+    let cardCombate = document.querySelector("#combate-interaction")
+
+    let btnHero2 = document.querySelector("#btn-atack2")
+    let turn2 = document.querySelector("#turn-player2")
+
+    
+    btnHero2.classList.toggle('hide')
+    turn2.classList.toggle('hide')
+
+    cardContainer.classList.toggle('hide')
+    cardCombate.classList.toggle('hide')
 }
 
 class Hero {
@@ -306,6 +313,7 @@ class Hero {
         this.ProgressBar.classList.add("progress-bar");
         this.ProgressBar.setAttribute("max", lifeHero)
         this.ProgressBar.setAttribute("value", this.Life)
+        this.ProgressBar.innerHTML = this.life
         this.form.appendChild(this.ProgressBar);
 
         this.cardSkill = document.createElement('div');
@@ -330,104 +338,106 @@ class Hero {
         this.player.appendChild(skillNumberWin)
     }       
     atack(){        
-        
-      
-
-    const combateText = document.querySelector('#combate-text')
-    let rollDice = dice(6,0)
-    if(rollDice == 6 || rollDice == 1){            
-         switch (rollDice) {
-                
-            case 6:
-                this.Life --
-                this.ProgressBar.setAttribute("value", this.Life)
-                
-                if(this.Life <= 0 ){
-                    combateText.innerHTML = this.Name + ", se machucou com a própria arma e morreu. Tragico, tragico"
-
-                }else{
-                combateText.innerHTML = this.Name + ", se machucou com a própria arma."
-                }
-
-            break;
-            
-            case 1:
-                this.Dano = dice(6,this.Strong)*2;
-                
-                if(this.id == "hero1"){
-                hero2.Life = hero2.Life - (hero2.Armor - this.Dano)
-                hero2.ProgressBar.setAttribute("value", hero2.Life)
-             
-                combateText.innerHTML = this.Name + " causou " + this.Dano +
-                " de Dano CRITICO <br>"  + hero2.Name + " esta com " + hero2.Life + " de Vida"
-                
-                
-            } else if ( this.id == "hero2"){
-                hero1.Life = hero1.Life - (hero1.Armor - this.Dano)
-                hero1.ProgressBar.setAttribute("value", hero1.Life)
-                            
-                combateText.innerHTML = this.Name + " causou " + this.Dano +
-                " de Dano CRITICO <br>"  + hero1.Name + " esta com " + hero1.Life + " de Vida"
-                
-                
-            }
-            
-            break;
-            
-
-
-            default:
-            } } else {                                 
-            let resDice = ((this.Dextrecity > rollDice) ? "maior" : "menor")
-                
-                switch (resDice) {
+              
+        const combateText = document.querySelector('#combate-text')
+        let rollDice = dice(6,0)
+        if(rollDice == 6 || rollDice == 1){            
+            switch (rollDice) {
                     
-                    case "maior":
-                        this.Dano = dice(6,this.Strong);
-                                              
-                        if(this.id == "hero1"){
-                        hero2.Life = hero2.Life - (this.Dano - hero2.Armor)
+                case 6:
+                    this.Life --
+                    this.ProgressBar.setAttribute("value", this.Life)
                     
-                        combateText.innerHTML = this.Name + " causou " + this.Dano +
-                        " de Dano <br>"  + hero2.Name + " esta com: " + hero2.Life + " de Vida"
-                        
-                        hero2.ProgressBar.setAttribute("value", hero2.Life)
+                    if(this.Life <= 0 ){
+                        combateText.innerHTML = this.Name + ", se machucou com a própria arma e morreu. Tragico, tragico"
 
-                    } else if ( this.id == "hero2"){
-                        hero1.Life = hero1.Life - (this.Dano - hero1.Armor)
-
-                        combateText.innerHTML = this.Name + " causou " + this.Dano +
-                        " de Dano <br>"  + hero2.Name + " esta com: " + hero2.Life + " de Vida"
-                        
-                        hero1.ProgressBar.setAttribute("value", hero1.Life)
-
+                    }else{
+                    combateText.innerHTML = this.Name + ", se machucou com a própria arma."
                     }
-                    break;
-                        
-                    case "menor":
-                        combateText.innerHTML = this.Name + ", errou o Ataque"
-                        console.log(this.Name + ", errou o Ataque")
-                                                    
-                    break;
-                        
-                default:
+
+                break;
+                
+                case 1:
+                    this.Dano = dice(6,this.Strong)*2;
                     
-            }
-            if (hero1.Life <= 0){
-                combateText.innerHTML = hero1.Name + ' morrer <br>'
-                + hero2.Name + " é o VENCEDOR"
-                hero1 = ""     
-                  
-            } else if(hero2.Life <= 0) {
-                combateText.innerHTML = hero2.Name +  ' morrer <br>'
-                + hero1.Name + " é o VENCEDOR"
-                hero2.form.remove()  
-                hero2 = "" 
- 
-            }
-          
-        }        
-    }               
+                    if(this.id == "hero1"){
+                    hero2.Life = hero2.Life - (hero2.Armor - this.Dano)
+                    hero2.ProgressBar.setAttribute("value", hero2.Life)
+                
+                    combateText.innerHTML = this.Name + " causou " + this.Dano +
+                    " de Dano CRITICO <br>"  + hero2.Name + " esta com " + hero2.Life + " de Vida"
+                    
+                    
+                } else if ( this.id == "hero2"){
+                    hero1.Life = hero1.Life - (hero1.Armor - this.Dano)
+                    hero1.ProgressBar.setAttribute("value", hero1.Life)
+                                
+                    combateText.innerHTML = this.Name + " causou " + this.Dano +
+                    " de Dano CRITICO <br>"  + hero1.Name + " esta com " + hero1.Life + " de Vida"
+                    
+                    
+                }
+                
+                break;
+                
+
+                default:
+                } } else {                                 
+                let resDice = ((this.Dextrecity > rollDice) ? "maior" : "menor")
+                    
+                    switch (resDice) {
+                        
+                        case "maior":
+                            this.Dano = dice(6,this.Strong);
+                                                
+                            if(this.id == "hero1"){
+                            hero2.Life = hero2.Life - (this.Dano - hero2.Armor)
+                        
+                            combateText.innerHTML = this.Name + " causou " + this.Dano +
+                            " de Dano <br>"  + hero2.Name + " esta com: " + hero2.Life + " de Vida"
+                            
+                            hero2.ProgressBar.setAttribute("value", hero2.Life)
+                       
+
+                        } else if ( this.id == "hero2"){
+                            hero1.Life = hero1.Life - (this.Dano - hero1.Armor)
+
+                            combateText.innerHTML = this.Name + " causou " + this.Dano +
+                            " de Dano <br>"  + hero1.Name + " esta com: " + hero1.Life + " de Vida"
+                            
+                            hero1.ProgressBar.setAttribute("value", hero1.Life)
+                          
+
+                        }
+                        break;
+                            
+                        case "menor":
+                            combateText.innerHTML = this.Name + ", errou o Ataque"
+                            console.log(this.Name + ", errou o Ataque")
+                                                        
+                        break;
+                            
+                    default:
+                        
+                }
+                if (hero1.Life <= 0){
+                    
+                    if(confirm('💀'+hero1.Name + ' morreu'+'💀,  !!'
+                    + hero2.Name +"🤴🏽"+ " é o VENCEDOR!! " + "Quer uma revanche?") == true){
+                        openHero()
+                    } else {
+                    location.reload()}
+                    
+                } else if(hero2.Life <= 0) {
+                    
+                    if(confirm('💀'+hero2.Name+  ' morreu'+'💀, !!'+ hero1.Name +"🤴🏽"+ " é o VENCEDO!! " + "Quer uma revanche?") == true){
+                        openHero()
+                    } else {
+                    location.reload()}
+                }
+            
+            }        
+        }               
     info(){
         console.log("container: "+this.container)
         console.log("player: "+this.player)
