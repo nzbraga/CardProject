@@ -241,6 +241,12 @@ function addHero(){
 
     }
 
+    if(player >= 1){
+
+        openHero()
+
+    }
+
     
 }
 function load(){
@@ -426,6 +432,7 @@ class Hero {
                     
                     if(confirm('💀'+hero1.Name + ' morreu'+'💀,  !!'
                     + hero2.Name +"🤴🏽"+ " é o VENCEDOR!! " + "Quer uma revanche?") == true){
+                        location.reload()
                         openHero()
                     } else {
                     location.reload()}
@@ -433,6 +440,7 @@ class Hero {
                 } else if(hero2.Life <= 0) {
                     
                     if(confirm('💀'+hero2.Name+  ' morreu'+'💀, !!'+ hero1.Name +"🤴🏽"+ " é o VENCEDO!! " + "Quer uma revanche?") == true){
+                        location.reload()
                         openHero()
                     } else {
                     location.reload()}
