@@ -217,6 +217,8 @@ function addHero(){
         hero2.createSkills("dextricity", "HABILIDADE" , newDextricityHero)
         hero2.createSkills("resistance", "RESISTENCIA" , newResistanceHero)
         hero2.createSkills("armor", "ARMADURA" , newArmorHero)
+
+        location.reload()
                 
         let card = document.querySelector("#card")
         let combateBtn = document.querySelector("#combate-interaction")
